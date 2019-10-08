@@ -8,6 +8,8 @@
 - CSS
 - JavaScript
 
+---
+
 ### 网页设计(页面重构, 切图)
 - 输入 设计图(psd, png)
 - 输出 html页面(HTML, CSS, 图片)
@@ -26,6 +28,8 @@
 - position top left
 - flex justify-content align-items
 - grid grid-template-rows grid-template-columns
+
++++
 
 #### 单位
 相对长度单位包括有： em, ex, ch, rem, vw, vh, vmax, vmin
@@ -54,6 +58,8 @@
 像素丢失： 对于一些分辨率较低的手机，可能设备像素还未达到viewport指定的宽度，此时可能出现边框丢失等问题。现代手机基本不会发生这种情况。
 缩放失效： 早期android手机不能根据meta中的width来进行缩放，需要配合initial-scale。这种完全依赖浏览器的方式也难免可能发生异常。
 文本折行： 会发生在缩放失效的机型中。
+
+---
 
 # 客户端开发统一平台
  flutter uniapp taro
