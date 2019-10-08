@@ -1,4 +1,13 @@
-# 前端工作内容
+---
+marp: true
+title: 转正述职报告
+description: 技术部田伟
+theme: uncover
+paginate: true
+_paginate: false
+---
+
+# <!--fit--> 前端工作内容
 - 网页设计
 - 客户端 小程序开发
 - 前端独立开发
