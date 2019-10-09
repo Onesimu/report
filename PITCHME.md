@@ -10,7 +10,7 @@ _paginate: false
 # 前端工作内容
 - 网页设计
 - 客户端 小程序开发
-- 前端功能
+- 网页应用
 
 ## 技术
 - HTML/CSS
@@ -31,19 +31,19 @@ _paginate: false
 
 #### 布局方式
 - 行盒 IFC text-align line-height vertical-align
-- 块盒 BFC margin width height
+- 块盒 *BFC* margin width height
 - inline block
 - table table-cell
 - float
-- position top left
-- flex justify-content align-items
+- *position* top left
+- *flex* justify-content align-items
 - grid grid-template-rows grid-template-columns
 
 ---
 
 #### 单位
-相对长度单位包括： em, ex, ch, rem, vw, vh, vmax, vmin
-绝对长度单位包括： cm, mm, q, in, pt, pc, px
+相对长度单位包括： *em*, ex, ch, *rem*, *vw*, vh, vmax, vmin
+绝对长度单位包括： cm, mm, q, in, pt, pc, *px*
 1in = 2.54cm = 25.4 mm = 101.6q = 72pt = 6pc = 96px
 px: 相对于设备的长度单位，像素是相对于显示器屏幕分辨率而言的。
 
