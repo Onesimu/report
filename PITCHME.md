@@ -79,6 +79,96 @@ React hooks
 规则数据化 代码解析数据执行 技术和业务分离
 
 ---
+```
+@dom def render = {
+  val githubUserName = Var("")
+  def inputHandler = { event: Event => githubUserName := event.currentTarget.asInstanceOf[Input].value }
+  <div>
+    <input type="text" oninput={ inputHandler }/>
+    <hr/>
+    {
+      val name = githubUserName.bind
+      if (name == "") {
+        <div>Please input your Github user name</div>
+      } else {
+        val githubResult = FutureBinding(Ajax.get(s"https://api.github.com/users/${name}"))
+        githubResult.bind match {
+          case None =>
+            <div>Loading the avatar for { name }</div>
+          case Some(Success(response)) =>
+            val json = JSON.parse(response.responseText)
+            <img src={ json.avatar_url.toString }/>
+          case Some(Failure(exception)) =>
+            <div>{ exception.toString }</div>
+        }
+      }
+    }
+  </div>
+}
+```
+
+---
+
+```
+ const Fetch = () => {
+   const getUrl = text => `https://api.github.com/search/repositories?q=${text}`
+   const { value, bind } = useField('react')
+   const { data, loading, setUrl } = useFetch(getUrl('react'))
+   return (
+     <div>
+       <input type="text" value={value} {...bind} />
+       <button onClick={() => {
+         setUrl(getUrl(value))
+       }}
+       >
+         search
+       </button>
+       {
+         loading
+           ? <div>Loading...</div>
+           : (<span>{`total_count: ${data.total_count}`}</span>)
+       }
+     </div>
+   )
+ }
+  return <Fetch />
+```
+---
+- 如果用户名为空，显示“请输入用户名”的提示文字；
+- 如果用户名非空，发起 Github API，并根据 API 结果显示不同的内容：
+
+- 如果尚未加载完，显示“正在加载”的提示信息；
+- 如果成功加载，把回应解析成 JSON，从中提取头像 URL 并显示；
+- 如果加载时出错，显示错误信息。
+---
+如果用户名为空，显示“请输入用户名”的提示文字；
+```
+if (name == "") {
+<div>Please input your Github user name</div>
+```
+如果用户名非空，发起 Github API，并根据 API 结果显示不同的内容：
+```
+} else {
+val githubResult = FutureBinding(Ajax.get(s"https://api.github.com/users/${name}"))
+githubResult.bind match {
+```
+如果尚未加载完，显示“正在加载”的提示信息；
+```
+case None =>
+  <div>Loading the avatar for { name }</div>
+```  
+如果成功加载，把回应解析成 JSON，从中提取头像 URL 并显示；
+```
+case Some(Success(response)) =>
+  val json = JSON.parse(response.responseText)
+  <img src={ json.avatar_url.toString }/>
+```
+如果加载时出错，显示错误信息。
+```
+case Some(Failure(exception)) => // 如果加载时出错，
+  <div>{ exception.toString }</div> // 显示错误信息。
+```
+---
 
 # 预处理
 parcel 
