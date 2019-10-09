@@ -85,21 +85,16 @@ React hooks
   def inputHandler = { event: Event => githubUserName := event.currentTarget.asInstanceOf[Input].value }
   <div>
     <input type="text" oninput={ inputHandler }/>
-    <hr/>
-    {
-      val name = githubUserName.bind
-      if (name == "") {
-        <div>Please input your Github user name</div>
-      } else {
+    { val name = githubUserName.bind
+      if (name == "") { <div>Please input your Github user name</div> } 
+      else {
         val githubResult = FutureBinding(Ajax.get(s"https://api.github.com/users/${name}"))
         githubResult.bind match {
-          case None =>
-            <div>Loading the avatar for { name }</div>
+          case None => <div>Loading the avatar for { name }</div>
           case Some(Success(response)) =>
             val json = JSON.parse(response.responseText)
             <img src={ json.avatar_url.toString }/>
-          case Some(Failure(exception)) =>
-            <div>{ exception.toString }</div>
+          case Some(Failure(exception)) => <div>{ exception.toString }</div>
         }
       }
     }
@@ -117,15 +112,11 @@ React hooks
    return (
      <div>
        <input type="text" value={value} {...bind} />
-       <button onClick={() => {
-         setUrl(getUrl(value))
-       }}
-       >
+       <button onClick={() => { setUrl(getUrl(value)) }} >
          search
        </button>
        {
-         loading
-           ? <div>Loading...</div>
+         loading ? <div>Loading...</div>
            : (<span>{`total_count: ${data.total_count}`}</span>)
        }
      </div>
@@ -141,6 +132,10 @@ React hooks
 - 如果成功加载，把回应解析成 JSON，从中提取头像 URL 并显示；
 - 如果加载时出错，显示错误信息。
 ---
+每一行代码都可以对应验收标准中的一句话，描述着业务规格，而非“异步流程”这样的技术细节。
+
+让我们回顾一下验收标准，看看和源代码是怎么一一对应的：
+
 如果用户名为空，显示“请输入用户名”的提示文字；
 ```
 if (name == "") {
@@ -152,11 +147,15 @@ if (name == "") {
 val githubResult = FutureBinding(Ajax.get(s"https://api.github.com/users/${name}"))
 githubResult.bind match {
 ```
+
+---
+
 如果尚未加载完，显示“正在加载”的提示信息；
 ```
 case None =>
   <div>Loading the avatar for { name }</div>
 ```  
+
 如果成功加载，把回应解析成 JSON，从中提取头像 URL 并显示；
 ```
 case Some(Success(response)) =>
