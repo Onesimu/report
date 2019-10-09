@@ -65,17 +65,23 @@ px: 相对于设备的长度单位，像素是相对于显示器屏幕分辨率�
 
 ---
 
-# 客户端开发统一平台
+## 客户端开发统一平台
  - Flutter (Google, Dart, Fuchsia) 
  - uni-app (DCloud, Js/Vue, mp) 
  - taro (京东, Js/React, mp)
 
-# js 功能 组件
-React hooks
+## js功能 组件化
+React 函数组件 hooks
 无侵入 纯HTML模板
+```
+<div> 
+ <p data-if="{user.id==50}" data-text="用户ID等于50">xxx</p> 
+ <p>其他内容</p> 
+</div> 
+```
 声明式的数据 接口 交互管理
-数据同构 传输透明 界面规则化
-数据库设计 ui设计 原型绑定 输出代码 全局统一规则控制
+数据同构 传输透明 交互规则化
+原型绑定 数据库设计 ui设计 全局统一规则控制
 规则数据化 代码解析数据执行 技术和业务分离
 
 ---
