@@ -69,6 +69,8 @@ px: 相对于设备的长度单位，像素是相对于显示器屏幕分辨率�
  - Flutter (Google, Dart, Fuchsia) 
  - uni-app (DCloud, Js/Vue, mp) 
  - taro (京东, Js/React, mp)
+ 
+--- 
 
 ## js功能 组件化
 React 函数组件 hooks
@@ -131,6 +133,7 @@ React 函数组件 hooks
   return <Fetch />
 ```
 ---
+### 示例需求描述
 - 如果用户名为空，显示“请输入用户名”的提示文字；
 - 如果用户名非空，发起 Github API，并根据 API 结果显示不同的内容：
 
